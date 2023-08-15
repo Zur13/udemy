@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Ingredient} from "../../shared/ingredient.model";
+import {ShoppingListService} from "../shopping-list.service";
 
 @Component({
   selector: 'app-shopping-list',
@@ -7,14 +8,10 @@ import {Ingredient} from "../../shared/ingredient.model";
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent {
-  ingrediets: Ingredient[] = [
-    new Ingredient('Apples', 5),
-  ];
-
-  constructor() {
+  get ingredients(): Ingredient[] {
+    return this.shpSrv.ingredients;
   }
 
-  ngOnInit(){
+  constructor(private shpSrv: ShoppingListService) {
   }
-
 }
