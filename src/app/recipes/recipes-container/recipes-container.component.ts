@@ -8,14 +8,9 @@ import {RecipesService} from "../recipes.service";
   styleUrls: ['./recipes-container.component.css']
 })
 export class RecipesContainerComponent implements OnInit {
-  selectedRecipe: Recipe;
-
-  constructor(private recSrv: RecipesService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.recSrv.recipeSelected.subscribe((recipe: Recipe) => {
-      this.selectedRecipe = recipe;
-    })
   }
 }

@@ -1,29 +1,37 @@
-<!--<div class="row">-->
-<!--  <div class="col-12">-->
-<!--    <img [src]="recipe.imagePath"-->
-<!--         alt="{{recipe.name}}"-->
-<!--         class="img-fluid rounded-3 "-->
-<!--         style="max-height: 120px;">-->
-<!--  </div>-->
-<!--</div>-->
-<div class="row">
+<div class="row row-gap-3">
   <div class="col-8">
     <h1>{{recipe.name}}</h1>
   </div>
-<!--</div>-->
-<!--<div class="row">-->
   <div class="col-4">
     <div class="btn-group" role="group">
-<!--      <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">-->
-      <button type="button" class="btn btn-primary dropdown-toggle " (click)="isManageShown=!isManageShown">
+      <button type="button" class="btn btn-success dropdown-toggle " (click)="isManageShown=!isManageShown">
         Manage Recipe
       </button>
-      <ul class="dropdown-menu show" [appDropdown]="isManageShown" aria-labelledby="btnGroupDrop1" data-popper-placement="bottom-start"
+      <ul class="dropdown-menu show" [appDropdown]="isManageShown" aria-labelledby="btnGroupDrop1"
+          data-popper-placement="bottom-start"
           style=" position: absolute; inset: 0px auto auto 0px;  margin: 0px; transform: translate(0px, 40px);"
       >
-        <li class="dropdown-item"><a href="#" (click)="toShoppingList()">To Shopping List</a></li>
-        <li class="dropdown-item"><a href="#">Edit Recipe</a></li>
-        <li class="dropdown-item"><a href="#">Delete Recipe</a></li>
+        <li class="dropdown-item">
+          <a style="cursor: pointer"
+             (click)="toShoppingList()"
+          >
+            To Shopping List
+          </a>
+        </li>
+        <li class="dropdown-item">
+          <a style="cursor: pointer;  color: inherit; text-decoration: none;"
+             [routerLink]="['edit']"
+          >
+            Edit Recipe
+          </a>
+        </li>
+        <li class="dropdown-item">
+          <a style="cursor: pointer"
+             (click)="deleteRecipe()"
+          >
+            Delete Recipe
+          </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -37,7 +45,7 @@
   <div class="col-12">
     <ul class="list-group">
       <li class="list-group-item"
-      *ngFor="let ing of recipe.ingredients">
+          *ngFor="let ing of recipe.ingredients">
         {{ing.name}} - {{ing.amount}}
       </li>
     </ul>

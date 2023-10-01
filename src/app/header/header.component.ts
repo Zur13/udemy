@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import * as events from "events";
+import {DataStorageService} from "../shared/data-storage.service";
 
 @Component({
   selector: 'app-header',
@@ -10,28 +11,14 @@ export class HeaderComponent {
   isMainCollapsed = false;
   isManageShown = false;
 
-  @Output() navigationEvent = new EventEmitter<string>();
-  @Input() selectedItem;
-
-  onRecipesClicked() {
-    this.navigationEvent.emit('recipes');
+  constructor(private datStore: DataStorageService) {
   }
 
-  onShoppingClicked() {
-    this.navigationEvent.emit('shopping');
+  onSaveData() {
+    this.datStore.storeRecipes();
   }
 
-  getStyleRecipe() {
-    if (this.selectedItem === 'recipes') {
-      return {'text-decoration': 'underline'};
-    }
-    return undefined;
-  }
-
-  getStyleShopping() {
-    if (this.selectedItem === 'shopping') {
-      return {'text-decoration': 'underline'};
-    }
-    return undefined;
+  onFetchData() {
+    this.datStore.fetchRecipes().subscribe();
   }
 }
