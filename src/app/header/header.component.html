@@ -31,6 +31,7 @@
           <a class="nav-link"
              routerLink="/recipes"
              routerLinkActive="active bg-primary rounded"
+             *ngIf="isAuthenticated"
           >
             &nbsp;Recipes&nbsp;
           </a>
@@ -39,18 +40,38 @@
           <a class="nav-link"
              routerLink="/shopping"
              routerLinkActive="active bg-primary rounded"
+
           >
             &nbsp;Shopping List&nbsp;
           </a>
         </li>
+        <li class="nav-item " >
+          <a class="nav-link"
+             routerLink="/auth"
+             routerLinkActive="active bg-primary rounded"
+             *ngIf="!isAuthenticated"
+          >
+            &nbsp;Authenticate&nbsp;
+          </a>
+        </li>
       </ul>
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
+        <li class="nav-item ">
+          <a style="cursor: pointer"
+             class="nav-link"
+             *ngIf="isAuthenticated"
+             (click)="onLogout()"
+          >
+            &nbsp;Logout&nbsp;
+          </a>
+        </li>
         <li class="nav-item dropdown">
           <!--          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Manage</a>-->
           <!--          <a href="#" class="nav-link dropdown-toggle" (click)="isManageShown=!isManageShown" data-bs-toggle="dropdown">Manage</a>-->
           <a style="cursor: pointer"
              class="nav-link dropdown-toggle"
              (click)="isManageShown=!isManageShown"
+             *ngIf="isAuthenticated"
           >
             &nbsp;Manage&nbsp;
           </a>
@@ -60,7 +81,7 @@
                  class="dropdown-item"
                  (click)="onSaveData()"
               >
-                Save Data
+                &nbsp;Save Data&nbsp;
               </a>
             </li>
             <li>
@@ -68,7 +89,7 @@
                  class="dropdown-item"
                  (click)="onFetchData()"
               >
-                Fetch Data
+                &nbsp;Fetch Data&nbsp;
               </a>
             </li>
           </ul>

@@ -1,12 +1,22 @@
-import {Component} from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "./auth/auth.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'cook_and_book';
+
+  constructor(
+    private authSrv: AuthService,
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.authSrv.autoLogin();
+  }
+
 
 }
