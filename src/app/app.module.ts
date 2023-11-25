@@ -6,7 +6,7 @@ import {HeaderComponent} from './header/header.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./auth/auth.interceptor";
-import {RecipesModule} from "./recipes/recipes.module";
+// import {RecipesModule} from "./recipes/recipes.module";
 import {ShoppingModule} from "./shop/shopping.module";
 import {SharedModule} from "./shared/shared.module";
 import {AuthModule} from "./auth/auth.module";
@@ -21,7 +21,7 @@ import {AuthModule} from "./auth/auth.module";
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    RecipesModule,
+    // RecipesModule,
     ShoppingModule,
     AuthModule
   ],
